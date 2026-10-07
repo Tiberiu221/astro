@@ -1,5 +1,5 @@
 ---
-title: "Deploy pe un VPS Linux în 30 de minute: ssh, systemd, nginx"
+title: "Deploy pe un VPS Linux în 20 de minute: ssh, systemd, nginx"
 description: "Traseul minim pentru o aplicație în producție pe Ubuntu: acces cu cheie SSH, un user dedicat, un serviciu systemd și nginx în față."
 pubDate: 2026-09-29
 author: "Andrei Popescu"
