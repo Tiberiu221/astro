@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { formatDate, getArticles, readingTime } from '../../lib/articles';
+
+// Static output: one HTML page per article, generated at build time.
+export const getStaticPaths = (async () => {
+  const articles = await getArticles();
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { article } = Astro.props as Props;
+const { Content } = await render(article);
+const minutes = readingTime(article.body ?? '');
+---
+
+<Layout title={article.data.title} description={article.data.description}>
+  <article class="post">
+    <header class="post-header">
+      <h1>{article.data.title}</h1>
+      <p class="lead">{article.data.description}</p>
+      <p class="meta">
+        <time datetime={article.data.pubDate.toISOString()}>{formatDate(article.data.pubDate)}</time> ·
+        {article.data.author} · {minutes} min de citit
+      </p>
+      <ul class="tags" aria-label="Etichete">
+        {article.data.tags.map((tag) => <li>#{tag}</li>)}
+      </ul>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <a class="back" href="/">← Înapoi la articole</a>
+  </article>
+</Layout>

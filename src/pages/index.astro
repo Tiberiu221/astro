@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_DESCRIPTION } from '../consts';
+import { articleUrl, formatDate, getArticles } from '../lib/articles';
+
+const articles = await getArticles();
+---
+
+<Layout>
+  <section class="intro">
+    <h1>Ultimele articole</h1>
+    <p class="lead">{SITE_DESCRIPTION}</p>
+  </section>
+
+  <ol class="article-list">
+    {
+      articles.map((article) => (
+        <li>
+          <article class="card">
+            <p class="meta">
+              <time datetime={article.data.pubDate.toISOString()}>{formatDate(article.data.pubDate)}</time> ·{' '}
+              {article.data.author}
+            </p>
+            <h2>
+              <a href={articleUrl(article)}>{article.data.title}</a>
+            </h2>
+            <p>{article.data.description}</p>
+            <ul class="tags" aria-label="Etichete">
+              {article.data.tags.map((tag) => (
+                <li>#{tag}</li>
+              ))}
+            </ul>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</Layout>

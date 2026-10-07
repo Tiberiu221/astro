@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Despre" description="Ce este Redacția Tech și cum este construit și publicat site-ul.">
+  <article class="post">
+    <h1>Despre</h1>
+    <p>
+      Redacția Tech este un site de presă demonstrativ: articolele sunt fișiere Markdown, validate la build cu o schemă
+      zod și transformate de Astro în HTML static, împreună cu feed-ul RSS și sitemap-ul. Pe server nu rulează nicio
+      aplicație și nu există bază de date: nginx servește direct fișierele din <code>/var/www/astro-demo</code>, cu cache
+      de un an pentru resursele din <code>/_astro/</code>, iar un deploy înseamnă un build local urmat de un
+      <code>rsync</code> către server.
+    </p>
+  </article>
+</Layout>
