@@ -5,7 +5,7 @@
 ## 1. Build local și ce iese în `dist/`
 [Mac] (`export IP=...` se dă în fiecare tab nou; pe Hetzner pui IP-ul serverului)
 ```bash
-export IP=192.168.252.2
+export IP=192.168.252.3
 npm run build
 find dist -type f | sort
 ```
