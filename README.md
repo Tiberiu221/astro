@@ -1,6 +1,6 @@
 # astro-demo: site de presă static cu Astro
 
-„Redacția Tech”, un site demo: 3 articole în Markdown (content collection cu schemă zod), pagină de articol cu timp de citire și etichete, pagina Despre, RSS și sitemap. Astro 5, TypeScript strict, fără framework de UI. Output static, servit de nginx pe Ubuntu 24.04.
+„Redacția Tech”, un site demo: 3 articole în Markdown (content collection cu schemă zod), pagină de articol cu timp de citire și etichete, pagina Despre, RSS și sitemap. Astro 7, TypeScript strict, fără framework de UI. Output static, servit de nginx pe Ubuntu 24.04.
 
 | Comandă | Ce face |
 | --- | --- |
